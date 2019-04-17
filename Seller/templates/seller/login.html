@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>GLK © 潮流专卖店管理后台登录</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'seller/css/font.css' %}">
+	<link rel="stylesheet" href="{% static 'seller/css/xadmin.css' %}">
+
+</head>
+<body class="login-bg" style="background: #fff url(../../static/media/image/denglun.jpg) 50% 0 no-repeat">
+    <div class="login layui-anim layui-anim-up">
+        <div class="message">GLK © 潮流专卖店管理后台登录</div>
+        <div id="darkbannerwrap"></div>
+        
+        <form method="post" class="layui-form" >
+            {% csrf_token %}
+            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <hr class="hr15">
+            <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <hr class="hr15">
+            <input type="hidden" name = "login_valid" value = "login_valid">
+            <hr class="hr15">
+            <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+            <hr class="hr20" >
+        </form>
+        <p style="text-align: center; color: red;">{{ result.error }}</p>
+    </div>
+</body>
+</html>
